@@ -32,10 +32,12 @@ This script expects two Excel files to be present in the working directory:
 Book1.xlsx : Data from untreated samples.
 
 Book2.xlsx : Data from detergent-treated samples.
+
 **Usage**
 Ensure the required Excel files (Book1.xlsx and Book2.xlsx) are in your working directory.
 
 Open and run the script in an R environment such as RStudio.
+
 **Outputs**
 The script will generate several outputs:
 
@@ -44,5 +46,6 @@ Plots in PNG format:
 all_data_plot.png: Visualizes all data including untreated, treated, and isolated EV populations.
 ev_only_plot.png: Focuses on isolated EV population with error shading.
 ev_only_plot_smoothed.png: Shows the smoothed data plot for isolated EV population.
+
 **Error Handling**
 The script includes basic error handling for missing files or data inconsistencies. Error messages will guide you to resolve common issues such as missing files or required data columns.
