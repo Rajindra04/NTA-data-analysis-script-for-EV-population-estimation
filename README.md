@@ -16,6 +16,7 @@ readxl
 openxlsx
 dplyr
 ggplot2
+
 You can install these packages using R commands like:
 
 R
@@ -29,9 +30,11 @@ install.packages("ggplot2")
 This script expects two Excel files to be present in the working directory:
 
 Book1.xlsx : Data from untreated samples.
+
 Book2.xlsx : Data from detergent-treated samples.
 **Usage**
 Ensure the required Excel files (Book1.xlsx and Book2.xlsx) are in your working directory.
+
 Open and run the script in an R environment such as RStudio.
 **Outputs**
 The script will generate several outputs:
