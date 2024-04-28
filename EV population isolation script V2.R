@@ -52,23 +52,14 @@ tryCatch({
   
   # Output summary data to an Excel file
   write.xlsx(summary_data, file = "ev_summary_data.xlsx")
-  # Calculate plot limits
-  x_min <- min(non_zero_data$`Bin centre (nm)`, na.rm = TRUE)
-  x_max <- max(non_zero_data$`Bin centre (nm)`, na.rm = TRUE)
-  y_min <- min(non_zero_data$`Concentration average`, na.rm = TRUE)
-  y_max <- max(non_zero_data$`Concentration average`, na.rm = TRUE)
-  
-  
-  # Plot to visualize all data including isolated EV population
+ 
+   # Plot to visualize all data including isolated EV population
   p_all_data <- ggplot() +
     geom_line(data = graph1, aes(x = `Bin centre (nm)`, y = `Concentration average`, color = "Untreated"), size = 1) +
     geom_line(data = graph2, aes(x = `Bin centre (nm)`, y = `Concentration average`, color = "Treated"), size = 1) +
     geom_line(data = ev_population, aes(x = `Bin centre (nm)`, y = EV_Concentration, color = "EV Population"), size = 1.5, linetype = "dashed") +
     labs(title = "Particle Size Distribution and Isolated EV Population", x = "Size (nm)", y = "Concentration (particles/ml)") +
     scale_color_manual(values = c("Untreated" = "blue", "Treated" = "green", "EV Population" = "red")) +
-    theme_minimal() +
-    xlim(x_min, x_max) +
-    ylim(y_min, y_max) +
     theme_minimal() +
     theme(legend.title = element_blank())
   
@@ -82,8 +73,6 @@ tryCatch({
     geom_ribbon(aes(ymin = EV_Concentration - EV_SE, ymax = EV_Concentration + EV_SE), 
                 fill = "lightpink", alpha = 0.4) +  # Add a shaded area for the standard error
     labs(title = "Isolated EV Population", x = "Particle Size (nm)", y = "Concentration (particles/ml)") +
-    xlim(x_min, x_max) +
-    ylim(y_min, y_max) +
     theme_minimal()
   
   # Print the EV-only plot and save it
@@ -97,8 +86,6 @@ tryCatch({
   ggplot(ev_population, aes(x = `Bin centre (nm)`, y = Smoothed_EV_Concentration)) +
     geom_line(color = "blue", size = 1.5) +
     labs(title = "Smoothed EV Population", x = "Particle Size (nm)", y = "Smoothed Concentration (particles/ml)") +
-    xlim(x_min, x_max) +
-    ylim(y_min, y_max) +
     theme_minimal()
   # Print the EV-only plot and save it
   print(p_ev_only)
